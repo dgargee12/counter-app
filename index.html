@@ -1,0 +1,111 @@
+<!DOCTYPE hmtl>
+<html>
+
+<head>
+   <title>Counter App</title>
+   <style>
+      .counter {
+         background-color: #add8e6;
+         height: 500px;
+         width: 500px;
+         position: relative;
+      }
+      
+      h1 {
+         font-size: 55px;
+         font-family: Arial, Helvetica, sans-serif;
+         font-weight: 300;
+      }
+      
+      #text {
+         padding-top: 20%;
+         color: #212529;
+      }
+      
+      #count {
+         color: white;
+      }
+      
+      .Btn {
+         padding: 10px 20px;
+         font-size: 24px;
+         color: white;
+         border: none;
+         border-radius: 5px;
+         outline: none;
+      }
+      
+      #decBtn {
+         background-color: #c82333;
+      }
+      
+      #incBtn {
+         background-color: #28a745;
+      }
+      
+      #resetBtn {
+         background-color: #343a40;
+      }
+      
+      .disabled {
+         background-color: gray !important;
+      }
+   </style>
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+
+<body>
+   <center>
+      <div class="counter">
+         <h1 id="text">Counter</h1>
+         <h1 id="count">0</h1>
+         <button class="Btn disabled" id="decBtn">-</button>
+         <button class="Btn" id="resetBtn">Reset</button>
+         <button class="Btn" id="incBtn">+</button>
+      </div>
+   </center>
+
+   <script>
+      var count = 0;
+      $('document').ready(function() {
+
+         $('#decBtn').click(function() {
+            if (count >= 1) {
+               count--;
+               update();
+            }
+         });
+         $('#incBtn').click(function() {
+            if (count < 10) {
+               count++;
+               update();
+            }
+         });
+         $('#resetBtn').click(function() {
+            count = 0;
+            update();
+         });
+      });
+
+      function update() {
+         if (count % 2 == 0) {
+            $('.counter').css('background', '#add8e6');
+            $('#count').css('color', 'white');
+         } else {
+            $('.counter').css('background', '#808080');
+            $('#count').css('color', 'red');
+         }
+         if (count == 0)
+            $('#decBtn').addClass('disabled');
+         else
+            $('#decBtn').removeClass('disabled');
+         if (count == 10)
+            $('#incBtn').addClass('disabled');
+         else
+            $('#incBtn').removeClass('disabled');
+         $('#count').html(count);
+      }
+   </script>
+</body>
+
+</html>
